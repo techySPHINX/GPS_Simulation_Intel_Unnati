@@ -5,6 +5,8 @@ from branca.element import JavascriptLink
 import os
 import geocoder
 
+# this whole calculation is based on server updated information
+
 MAPBOX_ACCESS_TOKEN = os.getenv("MAPBOX_ACCESS_TOKEN")
 
 GOOGLE_MAPS_API_KEY = os.getenv("GOOGLE_MAP_API")
@@ -72,7 +74,7 @@ def start_tracking():
     global is_start, path, accumulated_distance, current_marker
 
     if not has_geolocation_support:
-        log_console.text = "Geolocation is not supported by your browser"
+        log_console.text = "Geolocation is not supported for thsi place"
         return
 
     log_console.text = "Locating..."
@@ -80,6 +82,7 @@ def start_tracking():
     is_start = True
 
     def success(position):
+        # Calculating ......
         global accumulated_distance, current_marker, path
 
         latitude = position.coords.latitude

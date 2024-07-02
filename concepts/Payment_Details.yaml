@@ -1,0 +1,83 @@
+DATABASE_URL: <your_database_connection_string>
+
+Payment Detail Model:
+
+PaymentDetail:
+  __tablename__: payment_detail
+
+  payment_id:
+    type: integer
+    primary_key: true
+
+  user_id:
+    type: integer
+    foreign_keys: [ user.user_id ]
+
+  method_id:
+    type: integer
+    foreign_keys: [ payment_method.method_id ]
+
+  card_no:
+    type: string
+
+  expiry_month:
+    type: string
+
+  expiry_year:
+    type: string
+
+  card_name:
+    type: string
+
+This defines the PaymentDetail model with its table name, columns, and data types. The user_id and method_id columns are foreign keys referencing other tables (assumed to be user and payment_method respectively).
+
+Payment Service Class:
+
+Payment:
+  # Initialize with database session
+  __init__:
+    self.db: !python:type <class '__main__.SessionLocal'>
+
+  get_all_payments:
+    # Retrieve all payment details
+    - self.db.session.query(PaymentDetail).all()
+
+  get_payment_detail_by_id:
+    # Get payment details by ID
+    - self.db.session.query(PaymentDetail).filter_by(payment_id=id).first()
+
+  add_payment:
+    # Add a new payment record
+    - new_payment: !python:type <class '__main__.PaymentDetail'>
+        user_id: payment_data.user_id
+        method_id: payment_data.method_id
+        card_no: payment_data.card_no
+        expiry_month: payment_data.expiry_month
+        expiry_year: payment_data.expiry_year
+        card_name: payment_data.card_name
+      - self.db.session.add(new_payment)
+      - self.db.session.commit()
+
+  get_payment_detail_by_user:
+    # Retrieve all payments for a specific user
+    - self.db.session.query(PaymentDetail).filter_by(user_id=user_id).all()
+
+  update_payment_by_id:
+    # Update payment details by ID
+    - payment: self.db.session.query(PaymentDetail).filter_by(payment_id=payment_data.payment_id).first()
+    - if payment:
+        payment.user_id = payment_data.user_id
+        payment.method_id = payment_data.method_id
+        payment.card_no = payment_data.card_no
+        payment.expiry_month = payment_data.expiry_month
+        payment.expiry_year = payment_data.expiry_year
+        payment.card_name = payment_data.card_name
+        self.db.session.commit()
+      - else:
+        print("Payment with ID", payment_data.payment_id, "not found")
+
+
+This defines the Payment service class which interacts with the database. It provides methods for retrieving all payments, getting details by ID, adding new payments, fetching user-specific payments, and updating existing payments.
+
+Session Management:
+The code utilizes SessionLocal which is assumed to be configured elsewhere (possibly in a connection.py file) to handle database session creation and management.

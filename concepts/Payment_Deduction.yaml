@@ -1,0 +1,25 @@
+# Flask application configuration
+
+# Flask instance
+app: !python:type <class 'flask.Flask'>
+  __name__: __main__
+
+# Dummy account details
+account:
+  id: 123
+  balance: 1000
+
+# Function to deduct amount from balance
+deduct_from_balance: !python:type <function deduct_from_balance at 0x...>  
+ 
+
+# API route configuration
+api_routes:
+  /api/deduct:
+    methods: [POST]
+    handler: deduct  
+
+
+Dummy account details: It stores the initial account data with ID and balance.
+Function Placeholder: The deduct_from_balance function is referenced but its actual definition is not included. This is because YAML doesn't natively support functions. You'll need to keep the function definition in your Python code.
+API route configuration: This defines the /api/deduct route that accepts POST requests and maps it to the deduct function for handling the request logic

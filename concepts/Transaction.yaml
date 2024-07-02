@@ -1,0 +1,15 @@
+DATABASE_URL: !env_var DATABASE_URL
+
+# SQLAlchemy configuration 
+engine: !python:type <class 'sqlalchemy.engine.base.Engine'>
+SessionLocal: !python:type <class '__main__.sessionmaker'>
+Base: !python:type <class '__main__.declarative_base'>
+
+# Transaction class definition
+Transaction:
+  __init__: db (reference to database object)
+  get_transaction_by_user_id: Retrieves transaction details for a user ID.
+  get_transaction_by_id: Retrieves transaction details for a specific ID.
+  add_transaction: Adds a new transaction record to the database.
+
+

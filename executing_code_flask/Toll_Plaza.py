@@ -8,6 +8,7 @@ DB_PASSWORD = os.getenv("DB_PASSWORD")
 DB_HOST = os.getenv("DB_HOST")
 DB_PORT = os.getenv("DB_PORT")
 
+
 def connect_to_database():
     """Establishes a connection to the PostgreSQL database."""
     try:

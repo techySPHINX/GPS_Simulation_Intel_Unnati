@@ -1,0 +1,23 @@
+# Map configuration 
+MAPBOX_ACCESS_TOKEN: !env_var MAPBOX_ACCESS_TOKEN 
+GOOGLE_MAPS_API_KEY: !env_var GOOGLE_MAP_API 
+
+INDIA_CENTER_LAT_LNG: !call get_location_coordinates  
+
+is_start: null
+path: null
+accumulated_distance: 0
+current_marker: null
+
+get_location_coordinates: !python:type <function get_location_coordinates at 0x...>  
+create_map: !python:type <function create_map at 0x...>  
+start_tracking: !python:type <function start_tracking at 0x...>  
+update_distance: !python:type <function update_distance at 0x...>  
+calculate_distance: !python:type <function calculate_distance at 0x...>  
+
+# Note: Function implementations are not included in YAML as it doesn't natively support functions.
+# Please visit to executing code part.
+
+Location Coordinates: Calls the get_location_coordinates function to retrieve the center coordinates for India (replace with the actual function definition). Consider user input for dynamic location tracking.
+Tracking Variables: Initializes variables used for tracking within functions (these wouldn't be stored in a configuration file typically).
+Function References: Includes references to the various functions involved in map creation, tracking initiation, distance updates, and distance calculations.

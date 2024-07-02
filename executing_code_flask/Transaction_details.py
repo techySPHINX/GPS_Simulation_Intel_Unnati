@@ -1,17 +1,13 @@
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-from connection import DATABASE_URL 
-from .model import GpsTollTransaction, User, Vehicle, TollPlaza,VehicleType, PaymentDetail, PaymentMethod
+from executing_code_flask.connection import DATABASE_URL
+from .model import User, Vehicle, TollPlaza, VehicleType, PaymentDetail, PaymentMethod
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
-
-# Assuming you have already defined models for User, Transaction, Vehicle, etc.
-# ... (model definitions)
-# User, Vehicle, VehicleType, TollPlaza, PayementDetail, PaymentMethod for gps tolls sytem
 
 
 class Transaction:
@@ -20,6 +16,7 @@ class Transaction:
         self.db = db
 
     def get_transaction_by_user_id(self, user_id):
+        # Used for receiving transaction details for further communication using user ID
         session = self.db.session
 
         try:
@@ -34,13 +31,13 @@ class Transaction:
                 .all()
             return results
         except Exception as e:
-            # Handle error appropriately
             print("Error fetching transactions by user:", e)
             return None
         finally:
             session.close()
 
     def add_transaction(self, transaction_data):
+        # Update Transaction for system backup
         session = self.db.session
 
         try:
@@ -54,7 +51,6 @@ class Transaction:
                 status=transaction_data["status"],
                 amount=transaction_data["amount"],
                 isreturn=transaction_data["isreturn"],
-                # Add additional fields (isValid, otp, isPassed) if needed
                 isValid=transaction_data.get("isValid", None),
                 otp=transaction_data.get("otp", None),
                 isPassed=transaction_data.get("isPassed", None),
@@ -63,7 +59,7 @@ class Transaction:
             session.commit()
             return new_transaction
         except Exception as e:
-            
+
             print("Error adding transaction:", e)
             session.rollback()
             return None
@@ -71,6 +67,7 @@ class Transaction:
             session.close()
 
     def get_transaction_by_id(self, id):
+        # Details of all vehicles through vehicle ID
         session = self.db.session
 
         try:
@@ -85,7 +82,6 @@ class Transaction:
                 .first()
             return result
         except Exception as e:
-            # Handle error appropriately
+            
             print("Error fetching transaction by ID:", e)
             return None
-        

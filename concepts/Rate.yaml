@@ -1,0 +1,27 @@
+data_file: !python:type <class '_io.TextIOWrapper'>
+
+parse_logic: |-
+  This section outlines the logic used by the `parse_html` function to extract relevant data
+  from the HTML content within each booth entry. 
+  - Identifies rows containing keywords like 'Fee Effective Date', 'Single Journey', or 'Return Journey'.
+  - Extracts date and rate values based on keyword and column position.
+  - Handles cases where specific rates might be absent (e.g., 'None' value assigned).
+
+parse_toll_data:
+  description: |-
+    This function reads toll information from a provided JSON file and processes each booth entry.
+    It calls the `parse_html` function to extract relevant data from the included HTML content
+    and populates the booth data structure with details like effective date and vehicle rates.
+
+parse_html:
+  description: |-
+    This function assists the `parse_toll_data` function by parsing the HTML content associated
+    with a specific booth entry. It extracts the 'Fee Effective Date' and various vehicle rates
+    based on keywords and column positions within the HTML table. It utilizes the logic outlined
+    in the `parse_logic` comment for handling data extraction.
+
+
+Function References:
+
+parse_toll_data: A description of the function's purpose is included in a multi-line comment, highlighting how it processes each booth entry using parse_html.
+parse_html: A description explains the function's role in parsing booth-specific HTML content and extracting relevant data.

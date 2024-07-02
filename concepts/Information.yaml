@@ -1,0 +1,22 @@
+data_file: !python:type <class '_io.TextIOWrapper'>
+
+# Comment: This script retrieves and parses toll information from a user-provided data file.
+
+# Configuration for parsing HTML tables
+tags:
+  "Date of fee notification": date_fee_notification
+  "Commercial Operation Date": date_commercial_operation
+  # ...
+dates: # List of keys in 'tags' that represent dates
+  - Date of fee notification
+  - Commercial Operation Date
+
+fetch_toll_info:
+  # Fetches information for a specific toll ID   .....implementation not included
+parse_table:
+  # Parses HTML table and extracts relevant data
+
+
+Function References:
+fetch_toll_info: Reference to the function for fetching toll information (implementation not included).
+parse_table: Reference to the function for parsing HTML tables and extracting data (implementation not included).

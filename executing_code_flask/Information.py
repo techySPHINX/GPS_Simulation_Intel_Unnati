@@ -4,8 +4,13 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 import sys
 
+# this particularly made for getting and extracting informations of toll and their datas
+# if right will be resolved from government we could generate api to handle in app
+
+
 def fetch_toll_info(id, callback):
 
+    # not offcially now < import >
     url = f"http://tis.nhai.gov.in/TollInformation?TollPlazaID={id}"
     try:
         response = requests.get(url)
@@ -23,6 +28,7 @@ dates = [
 ]
 
 tags = {
+    # this should be mentioned through api stringe to get update details of toll for user
     "Date of fee notification": "date_fee_notification",
     "Commercial Operation Date": "date_commercial_operation",
     "Fee Rule": "fee_rule",

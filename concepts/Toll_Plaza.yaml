@@ -1,0 +1,16 @@
+DATABASE_URL: !env_var DATABASE_URL  
+DB_NAME: !env_var DB_NAME  
+DB_USER: !env_var DB_USER  
+DB_PASSWORD: !env_var DB_PASSWORD  
+DB_HOST: !env_var DB_HOST  
+DB_PORT: !env_var DB_PORT  
+
+
+TollPlaza:
+  __init__: !python:type <class '__main__.TollPlaza' at 0x...>  
+    connection: !python:type <class '__main__.psycopg2.connection'>  
+  get_all_toll_plazas: !python:type <function get_all_toll_plazas at 0x...>  
+  get_toll_plaza_by_id: !python:type <function get_toll_plaza_by_id at 0x...>  
+
+Database Connection: Includes placeholders for environment variables related to database connection details. You can replace them with the actual environment variable names or provide the connection string directly in DATABASE_URL.
+TollPlaza Class: Defines the TollPlaza class with placeholders for the constructor and methods. Function implementations are not included in YAML as it focuses on configuration data.
