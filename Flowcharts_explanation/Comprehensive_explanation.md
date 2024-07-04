@@ -2,7 +2,7 @@
 
 **This project simulates a GPS system with distress detection**.
 
-!["Flowchart represent our whole model"](Comprehensive.jpeg) { display: block; margin-left: auto; margin-right: auto; }
+!["Flowchart represent our whole model"](comprehensive.jpeg) { display: block; margin-left: auto; margin-right: auto; }
 
 This flowchart depicts the process of a GPS-based toll collection system, considering bypasses and fraud prevention:
 
