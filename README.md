@@ -7,8 +7,11 @@
 <p align="middle">This project bridges the gap between creative ideas and real-world impact. By simulating GPS-based toll systems in Python, we gain valuable insights into optimizing traffic flow, reducing congestion, and streamlining toll collection. This simulation will serve as a powerful tool for:</p>
 
 ⦿ Testing and evaluating new toll strategies before implementation.
+<br>
 ⦿ Identifying potential bottlenecks in existing toll systems.
+<br>
 ⦿ Designing more efficient and user-friendly toll experiences.
+<br>
 
 ## GPS Toll Booth Simulation (Python)
 
@@ -17,8 +20,11 @@
 **Functionality**:
 
 ⦿ Simulates vehicles traveling on a highway with a toll booth.
+<br>
 ⦿ Vehicles are assigned random speeds and arrival times.
+<br>
 ⦿ When a vehicle reaches the toll booth location, a toll is charged based on its axle count.
+<br>
 ⦿ The simulation tracks total revenue collected and average travel time.
 
 **Benefits**:
