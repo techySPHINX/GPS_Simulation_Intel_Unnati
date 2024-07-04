@@ -1,4 +1,4 @@
-<img align="middle" src="assets/frontend.jpg" alt="alternate_text" width="700px" height="300px">
+<img align="middle" src="assets/frontend.jpg" alt="alternate_text" width="1000px" height="300px">
 
 <h4 align="center">
   <I>"Transforming Innovation into Efficiency: A Python-powered GPS Toll Simulation"</I>
