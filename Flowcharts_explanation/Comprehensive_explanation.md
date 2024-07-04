@@ -1,40 +1,41 @@
-## GPS Simulation Process
+# GPS Simulation Process
 
-This project simulates a GPS system with distress detection.
+**This project simulates a GPS system with distress detection**.
 
-Key Stages:
 
-Data Acquisition:
 
-Gather GPS data (real or synthetic).
-Data Preparation:
+## Key Stages:
 
-Clean and pre-process the data for model training.
-Model Training:
+**Data Acquisition**:
+👉 Gather GPS data (real or synthetic).
 
-Train a machine learning model to identify distress signals.
-Model Testing:
+**Data Preparation**:
+👉 Clean and pre-process the data for model training.
 
-Evaluate the model's performance using unseen test data.
-Integration:
+**Model Training**:
+👉 Train a machine learning model to identify distress signals.
 
-Integrate a camera system (optional) and a virtual GPS device.
-Real-Time Tracking:
+**Model Testing**:
+👉 Evaluate the model's performance using unseen test data.
 
-Display simulated GPS coordinates and camera feed (if applicable) in real-time.
-Distress Detection:
+**Integration**:
+👉 Integrate a camera system (optional) and a virtual GPS device.
 
-Use the trained model to detect distress signals in real-time.
-Distress Response:
+**Real-Time Tracking**:
+👉 Display simulated GPS coordinates and camera feed (if applicable) in real-time.
 
-Trigger actions upon distress detection (alerts, notifications).
-Pick Location Identification:
+**Distress Detection**:
+👉 Use the trained model to detect distress signals in real-time.
 
-Identify potential rescue locations based on distress signals and GPS data.
-Data Storage/Sharing:
+**Distress Response**:
+👉 Trigger actions upon distress detection (alerts, notifications).
 
-Implement mechanisms to store and potentially share collected data.
+**Pick Location Identification**:
+👉 Identify potential rescue locations based on distress signals and GPS data.
 
-Note: A flowchart structure is added as an optional visual aid.
+**Data Storage/Sharing**:
+👉 Implement mechanisms to store and potentially share collected data.
 
-!["Flowchart represent our whole model"](assets/Flowchart.jpg) { display: block; margin-left: auto; margin-right: auto; }
+**Note**: A flowchart structure is added as an optional visual aid.
+
+!["Flowchart represent our whole model"](./assets/Flowchart.jpg) { display: block; margin-left: auto; margin-right: auto; }
