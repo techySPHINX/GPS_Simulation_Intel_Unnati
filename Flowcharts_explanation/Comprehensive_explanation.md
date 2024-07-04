@@ -2,7 +2,7 @@
 
 **This project simulates a GPS system with distress detection**.
 
-!["Flowchart represent our whole model"](comprehensive.jpeg) { display: block; margin-left: auto; margin-right: auto; }
+!["Flowchart represent our whole model"](comprehensive.jpeg) 
 
 **Bypass Detection and Camera Surveillance**:
 
@@ -43,17 +43,22 @@ This flowchart depicts the process of a GPS-based toll collection system, consid
 <br>
 ⦿ **Payment Processing**: Processes according to server programming or connected to any cloud server like AWS which is set though jenkins.\
 <br>
+<br>
 ⦿ **Transfer to Payment Gateway**: The payment is securely transferred to a payment gateway for processing.
+<br>
 <br>
 ⦿ **Transaction Success**: Upon successful payment completion, a notification is triggered:
 <br>
 ⦿ **In-App Notification**: The user receives a notification through the app installed on their smartphone.
 <br>
+<br>
 ⦿ **Bank Message**: A message is sent directly from the bank to the user's registered mobile number, confirming the transaction.
+<br>
 <br>
 ⦿ **E-Receipt Delivery**: An electronic receipt is sent to the user's email address via the e-governance system app, promoting transparency.
 <br>
 <br>
+
 ### Digital Signature Verification:
 ⦿ **User Verification**: The system obtains a digital signature from the user to verify their identity. This step is crucial to prevent unauthorized transactions.
 <br>
@@ -78,7 +83,7 @@ This flowchart depicts the process of a GPS-based toll collection system, consid
 
 **Note**: A flowchart structure is added as an optional visual aid.
 
-!["Flowchart represent our whole model"](Flowchart.jpeg) { display: block; margin-left: auto; margin-right: auto; }
+!["Flowchart represent our whole model"](Flowchart.jpeg) 
 
 ## Key Stages:
 
