@@ -30,8 +30,11 @@
 **Benefits**:
 
 ⦿ Provides a basic model for exploring GPS-based toll systems.
+<br>
 ⦿ Helps visualize potential impacts on traffic flow and revenue collection.
+<br>
 ⦿ Serves as a platform for further development and experimentation.
+<br>
 
 Requirements:
 
@@ -56,6 +59,8 @@ Run the simulation script using python main.py.
 ```
 python main.py
 ```
+<p align="middle">This Python code simulates a basic GPS-based toll booth system. It defines classes for vehicles (with arrival time, speed, axle count, and travel time) and _toll booths_ (with location, revenue collected, and vehicles processed). The generate_vehicles function creates a list of random vehicles with arrival times within the last hour, speeds, and axle counts. The _run_simulation_ function processes each vehicle by calculating its travel time to the toll booth (based on location and speed) and its toll (based on axle count with a customizable pricing logic). It then updates the toll booth's revenue and processed vehicles. Finally, it calculates and prints the total revenue collected and average travel time for all simulated vehicles.</p>
+
 
 ```
 """

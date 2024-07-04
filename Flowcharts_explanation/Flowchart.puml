@@ -1,0 +1,77 @@
+@startuml
+
+title GPS Toll Collection System (with Bypass Detection)
+
+!includes("activity.puml")  // Remove the double quotes
+
+subgraph Start Point Initialization
+    activity {
+        Start Point = 0;
+    }
+end
+
+subgraph Payment Processing
+    alt Payment Successful
+        Notification Triggered:
+            * In-App Notification
+            * Bank Message
+            * E-Receipt Delivery
+        activity<Digital Signature Verification> {
+            User Verification
+        }
+        Update Cloud Server
+    else Payment Failed
+        Handle Payment Failure
+    end
+end
+
+State<Vehicle Enters Highway>
+
+State<GPS Module Activated>
+
+State<Vehicle Exits Highway, Endpoint Recorded>
+
+State<Endpoint Transmitted>
+
+State<Toll Tax Calculated>
+
+State<End (Toll Not Applicable)>
+
+Vehicle Enters Highway --> GPS Module Activated
+activate GPS Module Activated
+
+GPS Module Activated --> Start Point Initialization
+activate Start Point Initialization
+deactivate GPS Module Activated
+
+Start Point Initialization --> alt Vehicle Exits Highway
+    Vehicle Exits Highway --> Endpoint Recorded
+    activate Endpoint Recorded
+
+alt Vehicle Exits Highway
+    else Bypass Detected
+        Start Point Initialization --> End (Toll Not Applicable)
+    end
+
+Endpoint Recorded --> Endpoint Transmitted
+activate Endpoint Transmitted
+deactivate Endpoint Recorded
+
+Endpoint Transmitted --> Distance Calculation
+activate Distance Calculation
+deactivate Endpoint Transmitted
+
+Distance Calculation --> Toll Tax Calculated
+activate Toll Tax Calculated
+deactivate Distance Calculation
+
+Toll Tax Calculated --> Payment Initiation
+activate Payment Initiation
+
+Payment Initiation --> Payment Processing
+activate Payment Processing
+deactivate Payment Initiation
+
+Payment Processing --> End (Toll Not Applicable)
+
+@enduml
