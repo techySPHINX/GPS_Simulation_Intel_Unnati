@@ -49,7 +49,6 @@ cd gps-toll-simulation
 Run the simulation script using python main.py.
 ```
 python main.py
-
 ```
 
 ```
