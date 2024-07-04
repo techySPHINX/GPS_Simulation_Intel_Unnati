@@ -4,28 +4,42 @@
 
 !["Flowchart represent our whole model"](comprehensive.jpeg) { display: block; margin-left: auto; margin-right: auto; }
 
+**Bypass Detection and Camera Surveillance**:
+
+<p align="middle">The system considers bypass scenarios. If a vehicle exits the highway without going through a designated toll booth, no charges are applied.
+The entire process is under camera surveillance to prevent unauthorized bypasses and ensure fair billing. This helps to identify vehicles that attempt to avoid tolls multiple times using the same booth.</p>
+
 This flowchart depicts the process of a GPS-based toll collection system, considering bypasses and fraud prevention:
 
 ⦿ **Vehicle Enters Highway**: The vehicle enters a highway equipped with GPS toll technology.
 <br>
+<br>
 ⦿ ***GPS Module Activates**: The vehicle's GPS module automatically activates upon entering the highway.
+<br>
 <br>
 ⦿ **Start Point Initialization**: The system initializes the starting point (startPoint) to zero, marking the beginning of the toll journey.
 <br>
+<br>
 ⦿ **Alternative (Bypass)**: If the vehicle takes a bypass route (not detected by GPS), the system skips steps 3-10 and proceeds to step 11 (End - Toll Not Applicable).
+<br>
 <br>
 ⦿ **Vehicle Exits Highway**: The vehicle exits the highway, triggering the system to record the exit point.
 <br>
+<br>
 ⦿ **End Point Initialization**: The system initializes the end point (endPoint) using the recorded exit location.
+<br>
 <br>
 ⦿ **End Point Transmission**: The end point (endPoint) is securely transmitted to a cloud server.
 <br>
+<br>
 ⦿ **Distance Calculation**: The system calculates the distance traveled (distance) using the start point (startPoint) and end point (endPoint).
+<br>
 <br>
 ⦿ **Toll Tax Calculation**: Based on the calculated distance (distance) and pre-defined toll rates, the system determines the toll tax amount (tollTax).
 <br>
-
+<br>
 ⦿ **Payment Initiation**: The system initiates the payment process for the calculated toll tax (tollTax).
+<br>
 <br>
 ⦿ **Payment Processing**: Processes according to server programming or connected to any cloud server like AWS which is set though jenkins.\
 <br>
@@ -39,13 +53,16 @@ This flowchart depicts the process of a GPS-based toll collection system, consid
 <br>
 ⦿ **E-Receipt Delivery**: An electronic receipt is sent to the user's email address via the e-governance system app, promoting transparency.
 <br>
-
+<br>
 ### Digital Signature Verification:
 ⦿ **User Verification**: The system obtains a digital signature from the user to verify their identity. This step is crucial to prevent unauthorized transactions.
 <br>
+<br>
 ⦿ **Cloud Server Update**: Finally, the transaction details and user verification are securely stored in the cloud server, providing an audit trail.
 <br>
+<br>
 ⦿ **End (Toll Not Applicable)**: If the system detects a bypass or the vehicle has already been charged for the same toll booth (within a reasonable time frame), the flowchart ends here, indicating no toll is applicable for this journey.
+<br>
 <br>
 ⦿ **Camera Surveillance**: Throughout the process, the system operates under camera surveillance to monitor for bypasses and potential fraudulent activities.
 
@@ -53,7 +70,9 @@ This flowchart depicts the process of a GPS-based toll collection system, consid
 
 ⦿ This system offers an efficient and transparent method for collecting tolls using GPS technology.
 <br>
+<br>
 ⦿ Bypass detection and multiple verification steps (digital signature, camera surveillance) aim to prevent fraud.
+<br>
 <br>
 ⦿ In-app notifications, bank messages, and e-receipts provide users with clear and convenient transaction details.
 
