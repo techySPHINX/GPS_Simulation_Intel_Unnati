@@ -14,6 +14,7 @@
 
 **Simulation Parameters**:
 <br>
+<br>
 ⭐ Geographic scope of the simulated area (city, region, highway).
 <br>
 ⭐ Timeframe of the simulation (day, week, month).
