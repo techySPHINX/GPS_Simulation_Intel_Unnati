@@ -1,46 +1,40 @@
-from itertools import tee
-from typing import Iterable, List, Tuple
-import executing_code_flask.Toll_Plaza as Toll_Plaza
-import numpy as np
+import math
 
-from tsa.dataclasses.geometry.line import Line  # type: ignore
-from tsa.storage import ReadStorageMethod # type: ignore
+def distance_to_line(point, line_start, line_end):
+    # Calculate line vector and point vector relative to line start
+    line_vec = (line_end[0] - line_start[0], line_end[1] - line_start[1])
+    point_vec = (point[0] - line_start[0], point[1] - line_start[1])
+
+    # Project point vector onto line vector
+    projection = ((point_vec[0] * line_vec[0]) + (point_vec[1] * line_vec[1])) / (line_vec[0] ** 2 + line_vec[1] ** 2)
+
+    # Check if projection is on the line segment
+    if projection < 0 or projection > 1:
+        # Not on segment, return shortest distance to line
+        return min(
+            math.sqrt(((point[0] - line_start[0]) ** 2) + ((point[1] - line_start[1]) ** 2)),
+            math.sqrt(((point[0] - line_end[0]) ** 2) + ((point[1] - line_end[1]) ** 2)),
+        )
+
+    # Projection is on segment, return distance to projection
+    projected_point = (line_start[0] + projection * line_vec[0], line_start[1] + projection * line_vec[1])
+    return math.sqrt(((point[0] - projected_point[0]) ** 2) + ((point[1] - projected_point[1]) ** 2))
 
 
-def _pairwise(iterable: Iterable) -> Iterable[Tuple]:
-    first, second = tee(iterable)
-    next(second, None)
-    return zip(first, second)
-
-
-def _order_intersection_indices(track, intersections):
-    intersection_distances = [track.curve.project(intersection) for _, intersection in intersections]
-    sorted_intersection_distance_indices = sorted(range(len(intersections)), key=lambda i: intersection_distances[i])
-    sorted_intersection_indices = map(lambda i: intersections[i][0], sorted_intersection_distance_indices)
-
-    return _pairwise(sorted_intersection_indices)
-
-
-def count_vehicles(track_source: ReadStorageMethod, count_lines: List[Line]):
+def count_vehicles(track, count_lines):
     number_of_lines = len(count_lines)
-    counts = np.zeros((number_of_lines, number_of_lines + 1), dtype=np.int32)
+    counts = [[0 for _ in range(number_of_lines + 1)] for _ in range(number_of_lines)]  # 2D list for counts
 
-    for track in track_source.read_track():
-        intersections = []
+    for i, line in enumerate(count_lines):
+        intersection_point = track.curve.intersection(line)  # Assuming intersection method exists
 
-        for i, line in enumerate(count_lines):
-            intersection_point = track.curve.intersection(line)
-
-            if not intersection_point.is_empty:
-                intersections.append((i, intersection_point))
-
-        if not intersections:
-            continue
-
-        if len(intersections) == 1:
-            counts[intersections[0][0], -1] += 1
-        else:
-            for from_index, to_index in _order_intersection_indices(track, intersections):
-                counts[from_index, to_index] += 1
+        if not intersection_point.is_empty:
+            distance = distance_to_line(intersection_point, line.start, line.end)
+            if distance < 1e-6:  # Tolerance for considering a point on the line
+                counts[i][-1] += 1  # Count for exiting track
+            else:
+                for j, other_line in enumerate(count_lines):
+                    if i != j and distance_to_line(intersection_point, other_line.start, other_line.end) < 1e-6:
+                        counts[i][j] += 1  # Count for entering/crossing between lines
 
     return counts
